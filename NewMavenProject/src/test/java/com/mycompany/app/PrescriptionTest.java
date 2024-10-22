@@ -6,30 +6,28 @@ import java.util.Date;
 
 public class PrescriptionTest {
 
+    // Test cases for addPrescription
+
     @Test
     public void testValidPrescription() {
         Prescription presc = new Prescription();
-        
-        // Assign values that meet all validation conditions
-        presc.setFirstName("John");  // First name should be between 4 to 15 characters
-        presc.setLastName("Doe");    // Last name should be between 4 to 15 characters
-        presc.setAddress("123 Main Street, Suburb, City, Country");  // Address should be at least 20 characters
-        presc.setSphere(-5.0f);      // Sphere should be between -20.0 and 20.0
-        presc.setAxis(90);           // Axis should be between 0 and 180
-        presc.setCylinder(-2.0f);    // Cylinder should be between -4.0 and 4.0
-        presc.setOptometrist("Dr. Smith"); // Optometrist name should be between 8 to 25 characters
-        presc.setExaminationDate(new Date());  // Examination date (valid)
-        
-        // Expect this to pass
-        boolean result = presc.addPrescription();
-        assertTrue(result); // Test should pass if inputs are valid
-    }
+        presc.setFirstName("John");
+        presc.setLastName("Doe");
+        presc.setAddress("123 Main Street, Suburb, City, Country");
+        presc.setSphere(-5.0f);
+        presc.setAxis(90);
+        presc.setCylinder(-2.0f);
+        presc.setOptometrist("Dr. Smith");
+        presc.setExaminationDate(new Date());
 
+        boolean result = presc.addPrescription();
+        assertTrue(result);
+    }
 
     @Test
     public void testInvalidFirstName() {
         Prescription presc = new Prescription();
-        presc.setFirstName("Jo");  // Invalid name, less than 4 characters
+        presc.setFirstName("Jo");  // Invalid, less than 4 characters
         presc.setLastName("Doe");
         presc.setAddress("123 Main Street, Suburb, City, Country");
         presc.setSphere(-5.0f);
@@ -41,6 +39,72 @@ public class PrescriptionTest {
         boolean result = presc.addPrescription();
         assertFalse(result);
     }
+
+    @Test
+    public void testInvalidLastName() {
+        Prescription presc = new Prescription();
+        presc.setFirstName("John");
+        presc.setLastName("D");  // Invalid, less than 4 characters
+        presc.setAddress("123 Main Street, Suburb, City, Country");
+        presc.setSphere(-5.0f);
+        presc.setAxis(90);
+        presc.setCylinder(-2.0f);
+        presc.setOptometrist("Dr. Smith");
+        presc.setExaminationDate(new Date());
+
+        boolean result = presc.addPrescription();
+        assertFalse(result);
+    }
+
+    @Test
+    public void testInvalidAddress() {
+        Prescription presc = new Prescription();
+        presc.setFirstName("John");
+        presc.setLastName("Doe");
+        presc.setAddress("Short Address");  // Invalid, less than 20 characters
+        presc.setSphere(-5.0f);
+        presc.setAxis(90);
+        presc.setCylinder(-2.0f);
+        presc.setOptometrist("Dr. Smith");
+        presc.setExaminationDate(new Date());
+
+        boolean result = presc.addPrescription();
+        assertFalse(result);
+    }
+
+    @Test
+    public void testInvalidSphere() {
+        Prescription presc = new Prescription();
+        presc.setFirstName("John");
+        presc.setLastName("Doe");
+        presc.setAddress("123 Main Street, Suburb, City, Country");
+        presc.setSphere(-25.0f);  // Invalid, less than -20
+        presc.setAxis(90);
+        presc.setCylinder(-2.0f);
+        presc.setOptometrist("Dr. Smith");
+        presc.setExaminationDate(new Date());
+
+        boolean result = presc.addPrescription();
+        assertFalse(result);
+    }
+
+    @Test
+    public void testInvalidOptometristName() {
+        Prescription presc = new Prescription();
+        presc.setFirstName("John");
+        presc.setLastName("Doe");
+        presc.setAddress("123 Main Street, Suburb, City, Country");
+        presc.setSphere(-5.0f);
+        presc.setAxis(90);
+        presc.setCylinder(-2.0f);
+        presc.setOptometrist("Smith");  // Invalid, less than 8 characters
+        presc.setExaminationDate(new Date());
+
+        boolean result = presc.addPrescription();
+        assertFalse(result);
+    }
+
+    // Test cases for addRemark
 
     @Test
     public void testValidRemark() {
@@ -63,7 +127,7 @@ public class PrescriptionTest {
     @Test
     public void testInvalidRemarkCase() {
         Prescription presc = new Prescription();
-        String remark = "client requested follow-up."; // Invalid case
+        String remark = "client requested follow-up.";  // Invalid, lowercase first letter
 
         boolean result = presc.addRemark(remark);
         assertFalse(result);
@@ -75,7 +139,26 @@ public class PrescriptionTest {
         presc.addRemark("First remark, perfectly valid.");
         presc.addRemark("Second remark, also valid.");
 
-        boolean result = presc.addRemark("Third remark, should fail."); // Should exceed limit
+        boolean result = presc.addRemark("Third remark, should fail.");  // Should exceed limit
+        assertFalse(result);
+    }
+
+    @Test
+    public void testValidMaxRemarkLength() {
+        Prescription presc = new Prescription();
+        String remark = "This is a perfectly valid remark with exactly twenty words.";
+
+        boolean result = presc.addRemark(remark);
+        assertTrue(result);
+    }
+
+    @Test
+    public void testAddRemarkAfterTwoValidRemarks() {
+        Prescription presc = new Prescription();
+        presc.addRemark("First remark, perfectly valid.");
+        presc.addRemark("Second remark, also valid.");
+
+        boolean result = presc.addRemark("Third remark, invalid due to limit.");
         assertFalse(result);
     }
 }
