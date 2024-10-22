@@ -3,12 +3,9 @@ package com.mycompany.app;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 public class Prescription {
-    private static int counter = 1; // Static counter for auto-incrementing IDs
-    private int prescID;
     private String firstName;
     private String lastName;
     private String address;
@@ -17,13 +14,7 @@ public class Prescription {
     private float cylinder;
     private Date examinationDate;
     private String optometrist;
-    private String[] remarkTypes = {"Client", "Optometrist"};
     private ArrayList<String> postRemarks = new ArrayList<>();
-
-    // Constructor to initialize Prescription with auto-incrementing ID
-    public Prescription() {
-        this.prescID = counter++;
-    }
 
     // Method to add prescription details to presc.txt
     public boolean addPrescription() {
@@ -38,7 +29,6 @@ public class Prescription {
 
         // Write to presc.txt if valid
         try (FileWriter fw = new FileWriter("presc.txt", true)) {
-            fw.write("Prescription ID: " + prescID + "\n");
             fw.write("First Name: " + firstName + "\n");
             fw.write("Last Name: " + lastName + "\n");
             fw.write("Address: " + address + "\n");
@@ -54,19 +44,17 @@ public class Prescription {
         return true;
     }
 
-    // Method to add remarks to remark.txt with type validation
-    public boolean addRemark(String remark, String type) {
+    // Method to add remarks to remark.txt
+    public boolean addRemark(String remark) {
         // Validate remark
         if (remark.split(" ").length < 6 || remark.split(" ").length > 20) return false;
         if (!Character.isUpperCase(remark.charAt(0))) return false;
-        if (!Arrays.asList(remarkTypes).contains(type)) return false;
         if (postRemarks.size() >= 2) return false;
 
         postRemarks.add(remark);
 
         // Write to remark.txt if valid
         try (FileWriter fw = new FileWriter("remark.txt", true)) {
-            fw.write("Remark Type: " + type + "\n");
             fw.write("Remark: " + remark + "\n");
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +72,4 @@ public class Prescription {
     public void setCylinder(float cylinder) { this.cylinder = cylinder; }
     public void setOptometrist(String optometrist) { this.optometrist = optometrist; }
     public void setExaminationDate(Date examinationDate) { this.examinationDate = examinationDate; }
-
-    public int getPrescID() { return prescID; }
-    public String[] getRemarkTypes() { return remarkTypes; }
 }
