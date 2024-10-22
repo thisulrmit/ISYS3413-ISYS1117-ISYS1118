@@ -18,7 +18,7 @@ public class Prescription {
 
     // Method to add prescription details to presc.txt
     public boolean addPrescription() {
-        // Validate conditions for prescription
+        // Validate conditions for prescription test 
         if (firstName.length() < 4 || firstName.length() > 15) return false;
         if (lastName.length() < 4 || lastName.length() > 15) return false;
         if (address.length() < 20) return false;
@@ -27,7 +27,7 @@ public class Prescription {
         if (cylinder < -4.0 || cylinder > 4.0) return false;
         if (optometrist.length() < 8 || optometrist.length() > 25) return false;
 
-        // Write to presc.txt if valid
+        // Writeas to presc.txt if valid
         try (FileWriter fw = new FileWriter("presc.txt", true)) {
             fw.write("First Name: " + firstName + "\n");
             fw.write("Last Name: " + lastName + "\n");
@@ -46,7 +46,7 @@ public class Prescription {
 
     // Method to add remarks to remark.txt
     public boolean addRemark(String remark) {
-        // Validate remark
+        // Validates remark
         if (remark.split(" ").length < 6 || remark.split(" ").length > 20) return false;
         if (!Character.isUpperCase(remark.charAt(0))) return false;
         if (postRemarks.size() >= 2) return false;
