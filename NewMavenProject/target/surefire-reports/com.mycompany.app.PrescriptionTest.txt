@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.app.PrescriptionTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.034 s <<< FAILURE! - in com.mycompany.app.PrescriptionTest
-testAddRemarkAfterTwoValidRemarks  Time elapsed: 0.01 s  <<< FAILURE!
+Tests run: 12, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.038 s <<< FAILURE! - in com.mycompany.app.PrescriptionTest
+testAddRemarkAfterTwoValidRemarks  Time elapsed: 0.011 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
 	at com.mycompany.app.PrescriptionTest.testAddRemarkAfterTwoValidRemarks(PrescriptionTest.java:162)
 
