@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.app.PrescriptionTest" time="0.037" tests="6" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.app.PrescriptionTest" time="0.034" tests="12" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\thisu\AppData\Local\Temp\surefire7156179696457551676\surefirebooter14047762553199426103.jar C:\Users\thisu\AppData\Local\Temp\surefire7156179696457551676 2024-10-22T20-05-22_524-jvmRun1 surefire3864015067938208094tmp surefire_0471305040900877559tmp"/>
+    <property name="sun.java.command" value="C:\Users\thisu\AppData\Local\Temp\surefire3569864288101254878\surefirebooter5195427565835735021.jar C:\Users\thisu\AppData\Local\Temp\surefire3569864288101254878 2024-10-23T18-52-59_420-jvmRun1 surefire15247805770663059785tmp surefire_011068359588217246112tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\thisu\Documents\ISYS3413-ISYS1117-ISYS1118\NewMavenProject\target\test-classes;C:\Users\thisu\Documents\ISYS3413-ISYS1117-ISYS1118\NewMavenProject\target\classes;C:\Users\thisu\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\thisu\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\thisu\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\thisu\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\thisu\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\thisu\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\thisu\AppData\Local\Temp\surefire7156179696457551676\surefirebooter14047762553199426103.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\thisu\AppData\Local\Temp\surefire3569864288101254878\surefirebooter5195427565835735021.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.1+11-39"/>
@@ -58,14 +58,24 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testInvalidFirstName" classname="com.mycompany.app.PrescriptionTest" time="0.013"/>
-  <testcase name="testValidPrescription" classname="com.mycompany.app.PrescriptionTest" time="0.007">
-    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at com.mycompany.app.PrescriptionTest.testValidPrescription(PrescriptionTest.java:25)
+  <testcase name="testInvalidFirstName" classname="com.mycompany.app.PrescriptionTest" time="0.014"/>
+  <testcase name="testAddRemarkAfterTwoValidRemarks" classname="com.mycompany.app.PrescriptionTest" time="0.01">
+    <failure message="expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.app.PrescriptionTest.testAddRemarkAfterTwoValidRemarks(PrescriptionTest.java:162)
 ]]></failure>
   </testcase>
-  <testcase name="testInvalidRemarkLength" classname="com.mycompany.app.PrescriptionTest" time="0"/>
+  <testcase name="testValidPrescription" classname="com.mycompany.app.PrescriptionTest" time="0.001">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.mycompany.app.PrescriptionTest.testValidPrescription(PrescriptionTest.java:24)
+]]></failure>
+  </testcase>
+  <testcase name="testInvalidOptometristName" classname="com.mycompany.app.PrescriptionTest" time="0"/>
+  <testcase name="testInvalidRemarkLength" classname="com.mycompany.app.PrescriptionTest" time="0.001"/>
+  <testcase name="testInvalidSphere" classname="com.mycompany.app.PrescriptionTest" time="0"/>
+  <testcase name="testValidMaxRemarkLength" classname="com.mycompany.app.PrescriptionTest" time="0.001"/>
   <testcase name="testInvalidRemarkCase" classname="com.mycompany.app.PrescriptionTest" time="0"/>
-  <testcase name="testValidRemark" classname="com.mycompany.app.PrescriptionTest" time="0.005"/>
-  <testcase name="testMaxRemarksExceeded" classname="com.mycompany.app.PrescriptionTest" time="0.001"/>
+  <testcase name="testInvalidLastName" classname="com.mycompany.app.PrescriptionTest" time="0"/>
+  <testcase name="testInvalidAddress" classname="com.mycompany.app.PrescriptionTest" time="0"/>
+  <testcase name="testValidRemark" classname="com.mycompany.app.PrescriptionTest" time="0.001"/>
+  <testcase name="testMaxRemarksExceeded" classname="com.mycompany.app.PrescriptionTest" time="0"/>
 </testsuite>
